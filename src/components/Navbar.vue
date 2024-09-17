@@ -1,5 +1,17 @@
 <script setup>
   import logo from '@/assets/img/logo.png'
+  import { RouterLink, useRoute } from 'vue-router';
+  const route = useRoute();
+
+  const isLinkActive = (routePath) => {
+    return route.path === routePath;
+  }
+  const links = [
+    { path: '/', name: 'Home' },
+    { path: '/jobs', name: 'Jobs' },
+    { path: '/jobs/add', name: 'Add Job' }
+  ]
+
 </script>
 
 <template>
@@ -10,28 +22,20 @@
             class="flex flex-1 items-center justify-center md:items-stretch md:justify-start"
           >
             <!-- Logo images/logo.png-->
-            <a class="flex flex-shrink-0 items-center mr-4" href="index.html">
+            <RouterLink class="flex flex-shrink-0 items-center mr-4" to="/">
               <img class="h-10 w-auto" :src="logo" alt="Vue Jobs" />
               <span class="hidden md:block text-white text-2xl font-bold ml-2"
                 >Vue Jobs</span
               >
-            </a>
+            </RouterLink>
             <div class="md:ml-auto">
               <div class="flex space-x-2">
-                <a
-                  href="index.html"
-                  class="text-white bg-green-900 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
-                  >Home</a
-                >
-                <a
-                  href="jobs.html"
-                  class="text-white hover:bg-green-900 hover:text-white rounded-md px-3 py-2"
-                  >Jobs</a
-                >
-                <a
-                  href="add-job.html"
-                  class="text-white hover:bg-green-900 hover:text-white rounded-md px-3 py-2"
-                  >Add Job</a
+
+                <RouterLink
+                  v-for="link in links"
+                  :to="link.path"
+                  :class="(isLinkActive(link.path) ? 'bg-green-900 hover:bg-gray-900': 'hover:bg-green-900') + ' text-white hover:text-white rounded-md px-3 py-2'"
+                  >{{ link.name }}</RouterLink
                 >
               </div>
             </div>

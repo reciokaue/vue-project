@@ -10,7 +10,7 @@
 </script>
 
 <template>
-   <div class="`${bg} p-6 rounded-lg shadow-md`">
+   <div :class="bg + ' p-6 rounded-lg shadow-md'">
     <slot/>
     <!-- <h2 class="text-2xl font-bold">For Developers</h2>
     <p class="mt-2 mb-4">
