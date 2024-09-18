@@ -1,7 +1,7 @@
 <script setup>
   import BackButton from '@/components/BackButton.vue';
 import axios from 'axios';
-  import { Loader2 } from 'lucide-vue-next';
+  import { Loader2, MapPin } from 'lucide-vue-next';
   import { onMounted, reactive } from 'vue';
   import { useRoute } from 'vue-router'
 
@@ -40,12 +40,10 @@ import axios from 'axios';
               <div class="text-gray-500 mb-4">{{ state.job.type }}</div>
               <h1 class="text-3xl font-bold mb-4">{{ state.job.title }}</h1>
               <div
-                class="text-gray-500 mb-4 flex align-middle justify-center md:justify-start"
+                class="text-orange-700 mb-4 flex items-center"
               >
-                <i
-                  class="fa-solid fa-location-dot text-lg text-orange-700 mr-2"
-                ></i>
-                <p class="text-orange-700">{{ state.job.location }}</p>
+                <MapPin class="size-4 mr-2" />
+                <p >{{ state.job.location }}</p>
               </div>
             </div>
 
